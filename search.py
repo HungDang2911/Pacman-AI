@@ -187,12 +187,6 @@ def nullHeuristic(state, problem=None):
 
 from util import PriorityQueue
 class MyPriorityQueueWithFunction(PriorityQueue):
-    """
-    Implements a priority queue with the same push/pop signature of the
-    Queue and the Stack classes. This is designed for drop-in replacement for
-    those two classes. The caller has to provide a priority function, which
-    extracts each item's priority.
-    """
     def  __init__(self, problem, priorityFunction):
         self.priorityFunction = priorityFunction
         PriorityQueue.__init__(self)
@@ -205,9 +199,7 @@ def f(problem,state,heuristic):
     return problem.getCostOfActions(state[1]) + heuristic(state[0],problem)
 
 def aStarSearch(problem, heuristic=nullHeuristic):
-    """Search the node that has the lowest combined cost and heuristic first."""
     "*** YOUR CODE HERE ***"
-# queueXY: ((x,y),[path]) #
     queueXY = MyPriorityQueueWithFunction(problem,f)
 
     path = []
